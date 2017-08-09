@@ -1,14 +1,3 @@
-#TOC {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 200px;
-  height: 100%;
-  overflow:auto;
-  font-size: 0.75em;
-  transform: translateY(-50%);
-}
-
 thead > tr > th {
     text-align: right !important;
 }
