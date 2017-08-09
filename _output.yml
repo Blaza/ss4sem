@@ -1,0 +1,13 @@
+bookdown::gitbook:
+  css: style.css
+  split_by: chapter
+  df_print: paged
+  toc_depth: 4
+  config:
+    toc:
+      collapse: subsection
+      before: |
+        <li><a href="./index.html">Statistički softver 4 - Seminarski rad</a></li>
+      after: |
+        <li><a href="https://github.com/blaza/ss4sem" target="blank">This books's Github repo</a></li>
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>

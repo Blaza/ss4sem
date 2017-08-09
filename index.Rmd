@@ -1,0 +1,36 @@
+---
+title: "Statistički softver 4 - Seminarski Rad"
+author: "Blagoje Ivanović"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+github-repo: blaza/ss4sem
+description: "Seminarski rad iz statističkog softvera 4"
+url: 'https\://blaza.github.io/ss4sem/'
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knit_hooks$set(no.margin = function(before, options, envir) {
+    if (before) par(mar = c(0, 0, 0, 0))
+})
+```
+
+# {-}
+
+U ovom dokumentu će biti predstavljena rešenja zadataka sa seminarskog i donekle
+detaljno objašnjene ideje kako je svaki zadatak uradjen. Za potrebe ovog
+seminarkog sam razvio R paket `ssotfveR` koji je dostupan na Github-u
+(https://github.com/blaza/ssoftver) i sadrži mnogo pomoćnih funkcija koje se ne
+tiču direktno zadataka na seminarskom ali se korišćenjem njih zadaci jako lako
+rešavaju.
+
+Instalirajmo zato sad paket `ssoftver` (potreban je paket `devtools`):
+
+```r
+devtools::install_github("blaza/ssoftver")
+```
+
+U prvom poglavlju rešavamo zadatke u vezi sa radom sa slikama i paketom
+`imager`, dok u drugom poglavlju se bavimo Minolovcem.
+

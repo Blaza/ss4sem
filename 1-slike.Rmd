@@ -1,39 +1,3 @@
----
-title: Statistički softver 4 - Seminarski rad
-author: Blagoje Ivanović
-output:
-  prettydoc::html_pretty:
-    theme:  hpstr
-    highlight: github
-    toc: true
-    toc_depth: 4
-    css: toc.css
-    df_print: paged
----
-
-```{r setup, include=FALSE}
-library(knitr)
-knit_hooks$set(no.margin = function(before, options, envir) {
-    if (before) par(mar = c(0, 0, 0, 0))
-})
-```
-
-
-U ovom dokumentu će biti predstavljena rešenja zadataka sa seminarskog i donekle
-detaljno objašnjene ideje kako je svaki zadatak uradjen. Za potrebe ovog
-seminarkog sam razvio R paket `ssotfveR` koji je dostupan na Github-u
-(https://github.com/blaza/ssoftver) i sadrži mnogo pomoćnih funkcija koje se ne
-tiču direktno zadataka na seminarskom ali se korišćenjem njih zadaci jako lako
-rešavaju.
-
-Instalirajmo zato sad paket `ssoftver` (potreban je paket `devtools`):
-
-```r
-devtools::install_github("blaza/ssoftver")
-```
-
-Prvo ćemo rešiti zadatke vezane za `imager` paket.
-
 # Rad sa slikama
 
 ## Uvodna priča
@@ -47,7 +11,7 @@ neki nepoznati (treba da prepoznamo da li je krug/pravougaonik ili ne).
 Stoga paket sadrži funkcije koje se bave pronalaženjem oblika na slici
 i njihovim klasifikovanjem. Te funkcije su `get_shapes` i `classify_shape`.
 
-### Pronalaženje i klasifikovanje oblika
+### Pronalaženje i klasifikacija oblika
 Prvo ćemo na primeru objasniti kako `get_shapes` pronalazi sve oblike na slici i
 vraća ih u listi. Princip je vrlo jednostavan. Pre svega:
 
@@ -232,7 +196,7 @@ način razlikovanja paralelograma i trapeza.
 Kada smo to demistifikovali, prodjimo jedan primer klasifikacije, da vidimo
 šta radi i funkcja `classify_shape`. Klasifikovaćemo naš trougao od ranije.
 
-```{r, results="markup", result="asis"}
+```{r, results="markup", result="asis", cols.min.print=3, cols.print=3}
 # uzmemo sve prediktore za nas shape. vracamo data.frame i ako negde imamo NA,
 # pretvorimo ga u -1, da ne bismo imali problema sa modelom.
 predictors <- get_shape_predictors(shape, df = TRUE, na_replacement = -1)
@@ -290,7 +254,7 @@ ako je dat fajl `file_out`. Na kraju vratimo rotiranu sliku i nagib
 pravougaonika u listi.
 
 Pogledajmo kod u akciji:
-
+ {.tabset}
 ```{r, fig.width=4.5, fig.height=3, fig.align="center", no.margin=TRUE}
 im <- load.image("images/first_test.png")
 plot(im, axes = FALSE)

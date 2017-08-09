@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistički softver 4 - Seminarski Rad</title>
+  <meta name="description" content="Seminarski rad iz statističkog softvera 4">
+  <meta name="generator" content="bookdown 0.4.2 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistički softver 4 - Seminarski Rad" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://blaza.github.io/ss4sem/" />
+  
+  <meta property="og:description" content="Seminarski rad iz statističkog softvera 4" />
+  <meta name="github-repo" content="blaza/ss4sem" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistički softver 4 - Seminarski Rad" />
+  
+  <meta name="twitter:description" content="Seminarski rad iz statističkog softvera 4" />
+  
+
+<meta name="author" content="Blagoje Ivanović">
+
+
+<meta name="date" content="2017-08-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="minolovac.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Statistički softver 4 - Seminarski rad</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="1" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html"><i class="fa fa-check"></i><b>1</b> Rad sa slikama</a><ul>
+<li class="chapter" data-level="1.1" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#uvodna-prica"><i class="fa fa-check"></i><b>1.1</b> Uvodna priča</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#pronalazenje-i-klasifikacija-oblika"><i class="fa fa-check"></i><b>1.1.1</b> Pronalaženje i klasifikacija oblika</a><ul>
+<li class="chapter" data-level="1.1.1.1" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#pronalazenje-oblika"><i class="fa fa-check"></i><b>1.1.1.1</b> Pronalaženje oblika</a></li>
+<li class="chapter" data-level="1.1.1.2" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#klasifikacija-oblika"><i class="fa fa-check"></i><b>1.1.1.2</b> Klasifikacija oblika</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#zadaci"><i class="fa fa-check"></i><b>1.2</b> Zadaci</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#prvi-zadatak"><i class="fa fa-check"></i><b>1.2.1</b> Prvi zadatak</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rad-sa-slikama.html"><a href="rad-sa-slikama.html#drugi-zadatak"><i class="fa fa-check"></i><b>1.2.2</b> Drugi zadatak</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="minolovac.html"><a href="minolovac.html"><i class="fa fa-check"></i><b>2</b> Minolovac</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/blaza/ss4sem" target="blank">This books's Github repo</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistički softver 4 - Seminarski Rad</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rad-sa-slikama" class="section level1">
+<h1><span class="header-section-number">Deo 1</span> Rad sa slikama</h1>
+<div id="uvodna-prica" class="section level2">
+<h2><span class="header-section-number">1.1</span> Uvodna priča</h2>
+<p>Pre nego li predjemo na sama rešenja zadataka, ukratko ćemo opisati nekoliko funkcija iz paketa <code>ssoftveR</code> koje se koriste.</p>
+<p>Naime, u ovim zadacima uvek je potrebno uraditi neku manipulaciju sa oblikom na slici. U prvom zadatku je taj oblik kvadrat, u drugom može biti i krug, ali i neki nepoznati (treba da prepoznamo da li je krug/pravougaonik ili ne).</p>
+<p>Stoga paket sadrži funkcije koje se bave pronalaženjem oblika na slici i njihovim klasifikovanjem. Te funkcije su <code>get_shapes</code> i <code>classify_shape</code>.</p>
+<div id="pronalazenje-i-klasifikacija-oblika" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Pronalaženje i klasifikacija oblika</h3>
+<p>Prvo ćemo na primeru objasniti kako <code>get_shapes</code> pronalazi sve oblike na slici i vraća ih u listi. Princip je vrlo jednostavan. Pre svega:</p>
+<blockquote>
+<p>Oblik definišemo kao povezan skup piksela iste boje.</p>
+</blockquote>
+<p>Učitajmo sliku koju koristimo za primer:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(imager)
+
+im &lt;-<span class="st"> </span><span class="kw">load.image</span>(<span class="st">&quot;images/shapes_demo.png&quot;</span>)</code></pre></div>
+<p>Ona ima dosta oblika na sebi koje ćemo detektovati i klasifikovati. Pogledajmo odmah krajnji rezultat, da znamo šta nas čeka, pa ćemo proći korak po korak šta se radi.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ssoftveR)
+
+<span class="co"># stavicemo dve slike jednu ispod druge i moramo da podesimo margine</span>
+<span class="kw">layout</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">1.3</span>,<span class="dv">0</span>))
+
+<span class="co"># plotujemo pocetnu sliku</span>
+<span class="kw">plot</span>(im, <span class="dt">axes =</span> <span class="ot">FALSE</span>)
+
+<span class="co"># nadjemo sve oblike na slici</span>
+shapes &lt;-<span class="st"> </span><span class="kw">get_shapes</span>(im)
+
+<span class="co"># jos jednom plotujemo originalnu sliku pa cemo na nju dodati tekst</span>
+<span class="kw">plot</span>(im, <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;⬇&quot;</span>)
+
+<span class="co"># na svaki oblik dostampamo koji je oblik, tj. klasifikujemo ga</span>
+<span class="kw">sapply</span>(shapes, <span class="cf">function</span>(s) {
+    cl &lt;-<span class="st"> </span><span class="kw">classify_shape</span>(s)
+    <span class="kw">text</span>(s<span class="op">$</span>centroid[<span class="dv">1</span>], s<span class="op">$</span>centroid[<span class="dv">2</span>], cl[<span class="dv">2</span>], <span class="dt">col =</span> <span class="st">&#39;white&#39;</span>, <span class="dt">cex =</span> <span class="dv">1</span>)
+})</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Sve oblike smo tačno klasifikovali! Prodjimo sada osnovne korake.</p>
+<div id="pronalazenje-oblika" class="section level4">
+<h4><span class="header-section-number">1.1.1.1</span> Pronalaženje oblika</h4>
+<p>Prvo želimo da nadjemo povezane delove slike koji su identične boje. S tim ciljem, koristimo funkciju <code>solid_blobs</code> da pretvorimo sliku u tzv. pixset ( sliku čije je svaki piksel ili <code>TRUE</code> ili <code>FALSE</code>) koji nam za svaki piksel govori da li je ćlan homogene jednobojne sredine ili nije.</p>
+<p>To radimo tako što definišemo neku okolinu<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, npr. u obliku krsta:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="96" style="display: block; margin: auto;" /></p>
+<p>pa prodjemo kroz celu sliku piksel po piksel, pri čemu za svaki piksel proverimo za ovako definisanu okolinu (u ovom slučaju trenutni piksel u sredini i po dva piksela u svakom pravcu) da li su svi pikseli iste boje. Ako jesu, trenutni piksel postavimo na <code>TRUE</code>, u suprotnom postaje <code>FALSE</code>.</p>
+<p>Pogledajmo rezultat koji dobijamo kad uradimo ovo za našu sliku:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">solid_blobs</span>(im), <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="432" style="display: block; margin: auto;" /></p>
+<p>Svi oblici su postali beli (<code>=TRUE</code>), ali, nažalost, i za neke duge linije smo zaključili da su homogene. Postoji način da se to prevazidje<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, što radi <code>get_shapes</code> funkcija (videli smo da daje dobar rezultat), ali možemo i samo da povećamo veličinu okoline koju gledamo, npr. neka je sada dužina stranice krsta 9, a ne 5.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blobs &lt;-<span class="st"> </span><span class="kw">solid_blobs</span>(im, <span class="dt">cr_n =</span> <span class="dv">9</span>)
+<span class="kw">plot</span>(blobs, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="432" style="display: block; margin: auto;" /></p>
+<p>Sada iz ovakve slike vrlo jednostavno, uz pomoć paketa <code>imager</code>, da izvučemo sve povezane celine, koje ćemo pretvoriti u oblike. Za to nam služi funkcija <code>split_connected</code>. Dakle, jednostavno dobijamo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">connected &lt;-<span class="st"> </span>imager<span class="op">::</span><span class="kw">split_connected</span>(blobs)
+<span class="kw">print</span>(connected)</code></pre></div>
+<pre><code>## Image list of size 11</code></pre>
+<p>Dobili smo 11 slika, zapravo pixset-ova, gde svaki pixset predstavlja jedan oblik, tj jednu povezanu celinu u prethodnoj (crno-beloj) slici.</p>
+<p>Na kraju, hoćemo da ove pixset-ove pretvorimo u nešto sa čim možemo lepo da radimo. To će biti objekti klase <code>shape</code>, koji su definisani u <code>ssoftveR</code> paketu.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shapes &lt;-<span class="st"> </span><span class="kw">lapply</span>(connected, shape_from_pixset)</code></pre></div>
+<p>Vidimo da je funkcija <code>shape_from_pixset</code> glavna ovde. Demonstrirajmo šta ona radi i vidimo kako izgleda jedan objekat klase shape.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># uzmimo jedan oblik</span>
+pixset &lt;-<span class="st"> </span>connected[[<span class="dv">7</span>]]
+
+<span class="co"># vidimo sta smo uzeli</span>
+<span class="kw">plot</span>(pixset, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="432" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pretvorimo ga u objekat klase &#39;shape&#39;</span>
+shape &lt;-<span class="st"> </span><span class="kw">shape_from_pixset</span>(pixset)
+
+<span class="co"># prikazimo rezultat</span>
+<span class="kw">plot</span>(shape, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="432" style="display: block; margin: auto;" /></p>
+<p>Vidimo da je slika za <code>shape</code> dosta drugačija od same slike za izvučeni pixset. Naime, vidimo da su sva temena obeležena, kao i sve stranice i centar oblika. To sve izvlači funkcija <code>shape_from_pixset</code>, uz korišćenje još nekih funkcija iz paketa, u koje nećemo sada zalaziti (naime, glavne od njih su <a href="https://github.com/Blaza/ssoftveR/blob/master/R/shape_geom.R#L1"><code>get_sides</code></a> i <a href="https://github.com/Blaza/ssoftveR/blob/master/R/shape_geom.R#L103"><code>get_vertices</code></a>, ali su dosta komplikovane da bi se bavili njima ovde).</p>
+<p>Pogledajmo strukturu objekta <code>shape</code> da steknemo sliku šta se tu sve nalazi.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(shape)</code></pre></div>
+<pre><code>## List of 6
+##  $ pixset  : &#39;pixset&#39; logi [1:567, 1:378, 1, 1] FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ xy      :&#39;data.frame&#39;:    8962 obs. of  2 variables:
+##   ..$ x: num [1:8962] 171 172 170 171 172 169 170 171 172 168 ...
+##   ..$ y: num [1:8962] 164 164 165 165 165 166 166 166 166 167 ...
+##  $ contours:List of 1
+##   ..$ :List of 3
+##   .. ..$ level: num 1
+##   .. ..$ x    : num [1:555] 70 70 70 71 72 ...
+##   .. ..$ y    : num [1:555] 264 264 264 264 264 ...
+##  $ centroid: Named num [1:2] 150 243
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;x&quot; &quot;y&quot;
+##  $ sides   :List of 3
+##   ..$ :List of 4
+##   .. ..$ x        : num [1:138] 71 72 73 74 75 76 77 78 79 80 ...
+##   .. ..$ y        : num [1:138] 264 264 265 265 265 ...
+##   .. ..$ direction: Named num [1:2] 0.965 0.264
+##   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;x&quot; &quot;y&quot;
+##   .. ..$ slope    : Named num 15.3
+##   .. .. ..- attr(*, &quot;names&quot;)= chr &quot;deg&quot;
+##   .. ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;side&quot; &quot;list&quot;
+##   ..$ :List of 4
+##   .. ..$ x        : num [1:138] 208 207 207 207 207 ...
+##   .. ..$ y        : num [1:138] 301 300 299 298 297 ...
+##   .. ..$ direction: Named num [1:2] -0.255 -0.967
+##   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;x&quot; &quot;y&quot;
+##   .. ..$ slope    : Named num 75.2
+##   .. .. ..- attr(*, &quot;names&quot;)= chr &quot;deg&quot;
+##   .. ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;side&quot; &quot;list&quot;
+##   ..$ :List of 4
+##   .. ..$ x        : num [1:103] 172 171 170 169 168 ...
+##   .. ..$ y        : num [1:103] 164 164 165 166 167 ...
+##   .. ..$ direction: Named num [1:2] -0.707 0.707
+##   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;x&quot; &quot;y&quot;
+##   .. ..$ slope    : Named num -45
+##   .. .. ..- attr(*, &quot;names&quot;)= chr &quot;deg&quot;
+##   .. ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;side&quot; &quot;list&quot;
+##  $ vertices:List of 3
+##   ..$ x    : num [1:3] 71 208 172
+##   ..$ y    : num [1:3] 264 301 164
+##   ..$ angle: num [1:3] 60.3 59.9 59.8
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;shape&quot; &quot;list&quot;</code></pre>
+<p>Dakle, imamo originalni pixset, izvučene konture oblika, centar, sve stranice i sva temena. Stranice sadrže koordinate svih tačaka, (jedinični)vektor pravca i nagib. Temena sadrže koordinate, kao i ugao kod svakog temena.</p>
+</div>
+<div id="klasifikacija-oblika" class="section level4">
+<h4><span class="header-section-number">1.1.1.2</span> Klasifikacija oblika</h4>
+<p>Do sada smo, dakle, izvukli sve oblike sa slike. Sada bi trebalo da ih klasifikujemo. U to nećemo toliko detaljno ulaziti, već ćemo samo navesti koje prediktore koristimo, pri čemu koristimo multinomni model (<code>multinom</code>) za klasifikaciju.</p>
+<p>Dakle, prediktore koje koristimo za prepoznavanje oblika su:</p>
+<ol style="list-style-type: decimal">
+<li><dl>
+<dt>Disperzija udaljenosti od centra (<code>centroid_distance_variance</code>):</dt>
+<dd>Kao što ime kaže, merimo disperziju udaljenosti tačaka sa konture oblika od centra. Ideja je da će to moći da razlikuje krug od elipse (kod kruga je disperzija bliska nuli), ali i mnoge druge oblike (kvadrat ima manju disperziju od pravougaonika i sl.).
+</dd>
+</dl></li>
+<li><dl>
+<dt>Broj temena (<code>vertex_count</code>):</dt>
+<dd>Ovo je očigledno, krug i elipsa imaju 0, trouglovi 3, četvorouglovi 4 temena, itd. Ovaj prediktor čemo tretirati u modelu kao faktorsku promenljivu.
+</dd>
+</dl></li>
+<li><dl>
+<dt>Disperzija dužina stranica (<code>side_length_variance</code>):</dt>
+<dd>Ovde je ideja slična kao u prvom prediktoru, ali je ovde poenta da će regularni poligoni imati disperziju približnu nuli (jednakostraničan trougao, kvadrat, romb, petougao, šestougao), a ostali oblici će imati neke veće vrednosti. Za krug i elipsu stavljamo da je ova disperzija nula.
+</dd>
+</dl></li>
+<li><dl>
+<dt>Disperzija uglova (<code>angle_variance</code>):</dt>
+<dd>Merimo disperziju uglova na temenima. Ovo liči na prethodni prediktor, ali ovaj prediktor nam daje mogućnost da razlikujemo pravougaonike od paralelograma. Kvardat i romb imaju isti broj temena i disperziju dužina stranica (0), ali kod kvadrata je i disperzija uglova nula, dok kod romba nije.
+</dd>
+</dl></li>
+<li><dl>
+<dt>Disperzija zbirova susednih uglova (<code>adj_angle_sum_variance</code>):</dt>
+<dd>Kod ovog prediktora inspiracija je bila to što znamo da je kod paralelograma zbir dva susedna ugla uvek <span class="math inline">\(\pi\)</span>, pa je disperzija tad nula. Time dobijamo jedan način razlikovanja paralelograma i trapeza.
+</dd>
+</dl></li>
+</ol>
+<p>Kada smo to demistifikovali, prodjimo jedan primer klasifikacije, da vidimo šta radi i funkcja <code>classify_shape</code>. Klasifikovaćemo naš trougao od ranije.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># uzmemo sve prediktore za nas shape. vracamo data.frame i ako negde imamo NA,</span>
+<span class="co"># pretvorimo ga u -1, da ne bismo imali problema sa modelom.</span>
+predictors &lt;-<span class="st"> </span><span class="kw">get_shape_predictors</span>(shape, <span class="dt">df =</span> <span class="ot">TRUE</span>, <span class="dt">na_replacement =</span> <span class="op">-</span><span class="dv">1</span>)
+<span class="co"># stampamo rezultat</span>
+predictors</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["centroid_distance_variance"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["vertex_count"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["side_length_variance"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["angle_variance"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["adj_angle_sum_variance"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"165.7733","2":"3","3":"0.05784749","4":"0.06384866","5":"0.2553947"}],"options":{"columns":{"min":[3],"max":[3]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Vidimo da imamo 3 temena, da su disperzije dužina stranica, uglova i zbirova susednih uglova bliske nuli, što je i očekivano jer je ovo jednakostraničan trougao. Da li će i naš model isto to reći? Pa hoće, videli smo već na početku.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># klasifikujemo oblik koristeci multinom model &quot;shapes_model&quot;</span>
+shape_class &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">predict</span>(<span class="kw">get_shapes_model</span>(), predictors))
+
+<span class="co"># da vidimo sta smo dobili</span>
+<span class="kw">c</span>(<span class="dt">code =</span> shape_class, <span class="dt">long_name =</span> shape_code_map[[shape_class]])</code></pre></div>
+<pre><code>##                   code              long_name 
+##                   &quot;et&quot; &quot;equilateral triangle&quot;</code></pre>
+<p>Upravo smo ovaj rezultat i očekivali!</p>
+<p>Dosta uvoda, predjimo sad na zadatke, ali to je sada trivijalno.</p>
+</div>
+</div>
+</div>
+<div id="zadaci" class="section level2">
+<h2><span class="header-section-number">1.2</span> Zadaci</h2>
+<p>Ovde ćemo dati kodove koji rešavaju konkretne zadatke sa seminarskog.</p>
+<div id="prvi-zadatak" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Prvi zadatak</h3>
+<p>U prvom zadatku je trebalo da odredimo ugao rotacije pravougaonika, da rotiramo sliku tako da pravougaonik bude horizontalan i da je sačuvamo. To ćemo sve obuhvatiti funkcijom <code>first</code> (kod će biti na engleskom):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">first &lt;-<span class="st"> </span><span class="cf">function</span>(im, <span class="dt">file_in =</span> <span class="ot">NULL</span>, <span class="dt">file_out =</span> <span class="ot">NULL</span>) {
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(file_in)) im &lt;-<span class="st"> </span><span class="kw">load.image</span>(file_in)
+
+  shape &lt;-<span class="st"> </span><span class="kw">get_shapes</span>(im)[[<span class="dv">1</span>]]
+  side &lt;-<span class="st"> </span><span class="kw">get_sides</span>(shape)[[<span class="dv">1</span>]]
+  center &lt;-<span class="st"> </span>shape<span class="op">$</span>centroid
+
+  rot &lt;-<span class="st"> </span><span class="kw">rotate_xy</span>(im, <span class="op">-</span>side<span class="op">$</span>slope, center[<span class="st">&#39;x&#39;</span>], center[<span class="st">&#39;y&#39;</span>], <span class="dt">boundary =</span> <span class="dv">1</span>)
+
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(file_out)) <span class="kw">save.image</span>(rot, file_out)
+
+  <span class="co"># subtract slope from 90 because y axis is weird for images etc</span>
+  <span class="kw">list</span>(<span class="dt">rotated =</span> rot, <span class="dt">angle =</span> <span class="dv">90</span> <span class="op">-</span><span class="st"> </span>side<span class="op">$</span>slope)
+}</code></pre></div>
+<p>Dakle, primimo sliku <code>im</code> ili je učitamo iz fajla <code>file_in</code>, pronadjemo sve oblike na slici i uzmemo prvi, koji bi trebalo da je jedini, uzmemo jednu njegovu stranicu, rotiramo ga oko centra za (-)nagib stranice i sačuvamo sliku ako je dat fajl <code>file_out</code>. Na kraju vratimo rotiranu sliku i nagib pravougaonika u listi.</p>
+<p>Pogledajmo kod u akciji: {.tabset}</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">im &lt;-<span class="st"> </span><span class="kw">load.image</span>(<span class="st">&quot;images/first_test.png&quot;</span>)
+<span class="kw">plot</span>(im, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="432" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">first</span>(im)
+<span class="kw">print</span>(res<span class="op">$</span>angle)</code></pre></div>
+<pre><code>##      deg 
+## 66.96448</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(res<span class="op">$</span>rotated, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="432" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">first</span>(res<span class="op">$</span>rotated)<span class="op">$</span>angle)</code></pre></div>
+<pre><code>##      deg 
+## 179.7518</code></pre>
+<p>Vidimo da je greška u rotaciji manja od 1°.</p>
+</div>
+<div id="drugi-zadatak" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Drugi zadatak</h3>
+<p>Ovaj zadatak je malo teži. Trebalo je da se proveri da li je na slici tačno jedan crni ili beli pravougaonik (krug) i, ako jeste, da se vrate koordinate njegovih temena (njegovog centra).</p>
+<p>Prvo ćemo definisati funkciju koja klasifikuje sve oblike na slici i vrati i njihove boje. Ovde koristimo jako pametnu funkciju <code>rgb2col</code> iz paketa <code>ssoftveR</code>, koja odredjuje tačno ime boje (iz palete dostupne R-u) na osnovu njenih RGB vrednosti. Ona u suštini bira onu boju koja je najbliža datoj RGB vrednosti, ali koristeći naprednu metriku datu u <code>colorscience</code> paketu. Ta metrika je deltaE2000 (<a href="https://en.wikipedia.org/wiki/Color_difference#CIEDE2000" class="uri">https://en.wikipedia.org/wiki/Color_difference#CIEDE2000</a>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shape_names_and_colors &lt;-<span class="st"> </span><span class="cf">function</span>(im, <span class="dt">shapes =</span> <span class="ot">NULL</span>) {
+  im &lt;-<span class="st"> </span><span class="kw">flatten.alpha</span>(im)
+
+  <span class="cf">if</span> (<span class="kw">is.null</span>(shapes)) shapes &lt;-<span class="st"> </span><span class="kw">get_shapes</span>(im)
+
+  <span class="co"># we transpose to get code and long_name columns</span>
+  shape_classes &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">sapply</span>(shapes, classify_shape))
+  shape_colors &lt;-<span class="st"> </span><span class="kw">sapply</span>(shapes, <span class="cf">function</span>(s) {
+                           cxy &lt;-<span class="st"> </span><span class="kw">round</span>(s<span class="op">$</span>centroid)
+                           <span class="co"># rescale rgb to 0-255</span>
+                           rgb &lt;-<span class="st"> </span>im[cxy[<span class="dv">1</span>], cxy[<span class="dv">2</span>], <span class="dv">1</span>, ] <span class="op">*</span><span class="st"> </span><span class="dv">255</span>
+                           <span class="co"># get color name</span>
+                           <span class="kw">rgb2col</span>(rgb)
+                  })
+  <span class="kw">cbind</span>(shape_classes, <span class="dt">color =</span> shape_colors)
+}</code></pre></div>
+<p>Proverimo je na našoj slici</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shape_names_and_colors</span>(im)</code></pre></div>
+<pre><code>##      code long_name color    
+## [1,] &quot;sq&quot; &quot;square&quot;  &quot;salmon3&quot;</code></pre>
+<p>Dakle ovo je neka boja lososa, recimo…</p>
+<p>Sada jednostavno rešavamo drugi zadatak u funkciji <code>second</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">second &lt;-<span class="st"> </span><span class="cf">function</span>(im, <span class="dt">file_in =</span> <span class="ot">NULL</span>, <span class="dt">circle =</span> <span class="ot">FALSE</span>) {
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(file_in)) im &lt;-<span class="st"> </span><span class="kw">load.image</span>(file_in)
+
+  shapes &lt;-<span class="st"> </span><span class="kw">get_shapes</span>(im)
+  snc &lt;-<span class="st"> </span><span class="kw">shape_names_and_colors</span>(im, shapes)
+
+  <span class="cf">if</span> (<span class="op">!</span>circle) {
+    <span class="cf">if</span> (<span class="kw">length</span>(snc[ ,<span class="dv">1</span>]) <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)
+      <span class="kw">stop</span>(<span class="st">&quot;The image doesn&#39;t contain exactly one shape!&quot;</span>)
+
+    <span class="cf">if</span> (<span class="op">!</span>(snc[<span class="dv">1</span>, <span class="st">&#39;code&#39;</span>] <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;sq&#39;</span>, <span class="st">&#39;re&#39;</span>)))
+      <span class="kw">stop</span>(<span class="st">&quot;The shape in the image isn&#39;t a rectangle or a square!&quot;</span>)
+
+    <span class="cf">if</span>(<span class="op">!</span>(snc[<span class="dv">1</span>, <span class="st">&#39;color&#39;</span>] <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>)))
+      <span class="kw">stop</span>(<span class="st">&quot;The shape in the image isn&#39;t white or black!&quot;</span>)
+
+    <span class="co"># plot shape</span>
+    <span class="kw">plot</span>(shapes[[<span class="dv">1</span>]], <span class="dt">axes =</span> <span class="ot">FALSE</span>)
+
+    <span class="co"># return shape vertices (and their coordinates)</span>
+    shapes[[<span class="dv">1</span>]]<span class="op">$</span>vertices
+
+  } <span class="cf">else</span> {
+    <span class="cf">if</span> (<span class="kw">length</span>(snc[ ,<span class="dv">1</span>]) <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)
+      <span class="kw">stop</span>(<span class="st">&quot;The image doesn&#39;t contain exactly one shape!&quot;</span>)
+
+    <span class="cf">if</span> (<span class="op">!</span>(snc[<span class="dv">1</span>, <span class="st">&#39;code&#39;</span>] <span class="op">==</span><span class="st"> &quot;ci&quot;</span>))
+      <span class="kw">stop</span>(<span class="st">&quot;The shape in the image isn&#39;t a circle!&quot;</span>)
+
+    <span class="cf">if</span>(<span class="op">!</span>(snc[<span class="dv">1</span>, <span class="st">&#39;color&#39;</span>] <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>)))
+      <span class="kw">stop</span>(<span class="st">&quot;The shape in the image isn&#39;t white or black!&quot;</span>)
+
+    shape &lt;-<span class="st"> </span>shapes[[<span class="dv">1</span>]]
+
+    <span class="kw">plot</span>(shape, <span class="dt">axes =</span> <span class="ot">FALSE</span>)
+
+    contour &lt;-<span class="st"> </span>shape<span class="op">$</span>contours[[<span class="dv">1</span>]]
+
+    <span class="co"># Calculating distances from the centroid of all points on the contour</span>
+    distances &lt;-<span class="st"> </span><span class="kw">sqrt</span>((contour<span class="op">$</span>x <span class="op">-</span><span class="st"> </span>shape<span class="op">$</span>centroid[<span class="st">&#39;x&#39;</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">+</span>
+
+<span class="st">                      </span>(contour<span class="op">$</span>y <span class="op">-</span><span class="st"> </span>shape<span class="op">$</span>centroid[<span class="st">&#39;y&#39;</span>])<span class="op">^</span><span class="dv">2</span>)
+
+    <span class="co"># return circle center and radius</span>
+    <span class="kw">cbind</span>(<span class="kw">t</span>(shape<span class="op">$</span>centroid), <span class="dt">radius =</span> <span class="kw">mean</span>(distances))
+  }
+}</code></pre></div>
+<p>Ako stavimo <code>circle = TRUE</code>, rešavamo zadatak 2.v, inače rešavamo 2.b.</p>
+<p>Probajmo našu sliku</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">second</span>(im, <span class="dt">circle =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## Error in second(im, circle = FALSE): The shape in the image isn&#39;t white or black!</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">second</span>(im, <span class="dt">circle =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## Error in second(im, circle = TRUE): The shape in the image isn&#39;t a circle!</code></pre>
+<p>Radi lepo, hajde sada par slika za koje će da prodje.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">im1 &lt;-<span class="st"> </span><span class="kw">load.image</span>(<span class="st">&#39;images/second_test_square.bmp&#39;</span>)
+<span class="kw">plot</span>(im1, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="432" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">im2 &lt;-<span class="st"> </span><span class="kw">load.image</span>(<span class="st">&#39;images/second_test_circle.png&#39;</span>)
+<span class="kw">plot</span>(im2, <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-2.png" width="432" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">second</span>(im1)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-3.png" width="432" style="display: block; margin: auto;" /></p>
+<pre><code>## $x
+## [1]  61.000  78.000 171.001 155.000
+## 
+## $y
+## [1]  44.001 137.001 120.000  26.999
+## 
+## $angle
+## [1] 90.04117 90.01907 89.86820 90.07157</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">second</span>(im2, <span class="dt">circle =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-4.png" width="432" style="display: block; margin: auto;" /></p>
+<pre><code>##             x        y   radius
+## [1,] 151.0373 133.0373 30.25643</code></pre>
+<p>I to bi bilo sve što se tiče rada sa slikama.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Okoline koje definišemo su oblika sličnog kao u <code>imager</code> paketu ono što zovu <a href="https://dahtah.github.io/imager/image_stats.html"><code>stencil</code></a>.<a href="rad-sa-slikama.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Funkcija <code>get_shapes</code> odbaci sve oblike koji imaju manje od 3 stranice.<a href="rad-sa-slikama.html#fnref2">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="minolovac.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
