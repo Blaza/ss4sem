@@ -3,11 +3,11 @@ title: Statistički softver 4 - Seminarski rad
 author: Blagoje Ivanović
 output:
   prettydoc::html_pretty:
-    theme:  hpstr
+    theme: leonids
     highlight: github
     toc: true
     toc_depth: 4
-    css: toc.css
+    css: style.css
     df_print: paged
 ---
 
@@ -226,7 +226,7 @@ kvadrata je i disperzija uglova nula, dok kod romba nije.
 
 5. Disperzija zbirova susednih uglova (`adj_angle_sum_variance`):
 : Kod ovog prediktora inspiracija je bila to što znamo da je kod paralelograma
-zbir dva susedna ugla uvek $\pi$, pa je disperzija tad nula. Time dobijamo jedan
+zbir dva susedna ugla uvek 180°, pa je disperzija tad nula. Time dobijamo jedan
 način razlikovanja paralelograma i trapeza.
 
 Kada smo to demistifikovali, prodjimo jedan primer klasifikacije, da vidimo

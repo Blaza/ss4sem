@@ -1,0 +1,19 @@
+#TOC {
+    text-align: left !important;
+}
+
+#TOC ul {
+    padding-left: 20px;
+}
+
+.TOC-title {
+    font-size: 1.3em;
+}
+
+thead > tr > th {
+    text-align: right !important;
+}
+tbody > tr > td {
+    text-align: right !important;
+}
+
