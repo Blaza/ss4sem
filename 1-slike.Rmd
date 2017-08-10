@@ -10,7 +10,7 @@ neki nepoznati (treba da prepoznamo da li je krug/pravougaonik ili ne).
 Stoga paket sadrži funkcije koje se bave pronalaženjem oblika na slici
 i njihovim klasifikovanjem. Te funkcije su `get_shapes` i `classify_shape`.
 
-### Pronalaženje i klasifikovanje oblika
+### Pronalaženje i klasifikacija oblika
 Prvo ćemo na primeru objasniti kako `get_shapes` pronalazi sve oblike na slici i
 vraća ih u listi. Princip je vrlo jednostavan. Pre svega:
 
@@ -55,7 +55,7 @@ sapply(shapes, function(s) {
 Sve oblike smo tačno klasifikovali!
 Prodjimo sada osnovne korake.
 
-#### Pronalaženje oblika
+#### Pronalaženje oblika {-}
 
 Prvo želimo da nadjemo povezane delove slike koji su identične boje. S tim
 ciljem, koristimo funkciju `solid_blobs` da pretvorimo sliku u tzv. pixset (
@@ -156,7 +156,7 @@ Dakle, imamo originalni pixset, izvučene konture oblika, centar, sve stranice i
 sva temena. Stranice sadrže koordinate svih tačaka, (jedinični)vektor pravca i
 nagib. Temena sadrže koordinate, kao i ugao kod svakog temena.
 
-#### Klasifikacija oblika
+#### Klasifikacija oblika {-}
 
 Do sada smo, dakle, izvukli sve oblike sa slike. Sada bi trebalo da ih
 klasifikujemo. U to nećemo toliko detaljno ulaziti, već ćemo samo navesti koje

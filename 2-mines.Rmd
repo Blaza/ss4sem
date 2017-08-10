@@ -48,7 +48,7 @@ nalazi na polju sa table Minolovca. Slike koje koristimo za obučavanje se nalaz
 u folderu `minesolver/mines_img/`, a slike koje ćemo koristiti za testiranje
 modela su u `minesolver/mines_img/control`.
 
-#### Skup za obučavanje
+#### Skup za obučavanje {-}
 
 Da ne bismo ručno klasifikovali polja za skupove za obučavanje i kontrolu,
 iskoristićemo fajlove `minesolver/tr_cls.RDS` i `minesolver/ct_cls.RDS` koje smo
@@ -102,7 +102,7 @@ ggplot(tr_set, aes(x = x_arc_length, y = y_arc_length, color = class)) +
 
 Vidimo da su klase lepo razdvojene, možemo očekivati da ćemo imati dobar model.
 
-#### Prediktori
+#### Prediktori {-}
 
 Vizuelizujmo sada prediktore koje koristimo, jer slika govori hiljadu reči.
 Kod koji ovo radi se nalazi u fajlu `minesolver/pred_visual.R`.
@@ -116,7 +116,7 @@ Vidi se da svaki broj ima različit oblik krive koja predstavlja gustinu piksela
 po x i y koordinatama. Kao prediktore `x_arc_length` i `y_arc_length` mi
 jednostavno koristimo odgovarajuće dužine tih krivih.
 
-#### Kontrolni skup
+#### Kontrolni skup {-}
 
 Hajde sad da formiramo i kontrolni skup. Na skoro isti način to radimo kao i što
 smo skup za obučavanje.
@@ -156,12 +156,12 @@ ct_set <- cbind(ct_preds, class = ct_cls)
 
 Sada možemo da predjemo na pravljenje modela.
 
-#### Modeli
+#### Modeli {-}
 
 Napravićemo 3 modela (LDA, QDA i multinomni) i testirati njihovu preciznost da
 ustanovimo koji je najbolji.
 
-##### LDA
+##### - LDA {-}
 
 Prvi na listi modela koje ćemo da probamo je LDA model. Jednostavno se kreira
 koristeći funkciju `lda` iz `MASS` paketa i generisani skup za obučavanje.
@@ -212,7 +212,7 @@ Na kontrolnom skupu smo sve pogodili! Preciznost je 100%.
 
 Ovo će biti teško pobediti. Idemo na QDA model.
 
-##### QDA
+##### - QDA {-}
 
 Ponovićemo isti postupak kao i za LDA model
 
@@ -266,7 +266,7 @@ bolji model.
 
 Da li će multinomni model biti bolji čak i od QDA? Saznaćemo u sledećem odeljku.
 
-##### Multinomni
+##### - Multinomni {-}
 
 Za kraj ostaje da proverimo i multinomni model. Njega pravimo koristeći se
 paketom `nnet` na sledeći način:
@@ -351,7 +351,7 @@ i poredjenjem sa srednjim brojem.
 
 Predjimo na konkretna rešenja zadataka.
 
-#### (a) *resi_tablu(matrica, ...)*
+#### (a) *resi_tablu(matrica, ...)* {-}
 Treba da definišemo funkciju `resi_tablu(matrica, ...)` koja rešava datu tablu
 Minolovca.
 
@@ -377,7 +377,7 @@ i ponavaljamo sledeći postupak za svako od tih polja:
 Analogan postupak ponovimo i stavljajući na početku da na polju nije mina
 i vidimo da li dolazi do kontradikcije, pa da mora da bude mina na tom polju.
 
-#### (b) *MK_simulacija(matrica, ...)*
+#### (b) *MK_simulacija(matrica, ...)* {-}
 Zadatak je da od preostalih neotvorenih polja odredimo ono koje ima najveću
 i ono koje ima najmanju verovatnoću da ima minu na sebi. Ovo radimo u funkciji
 `get_mine_probs` iz `minesolver/solver.R` tako što preostali broj mina mnogo
@@ -434,7 +434,7 @@ drugoj polja koja nismo uspeli da rešimo sva imaju oko 50% šanse da budu mine,
 sem da nagadjamo.
 
 
-#### (c) *prava_matrica(matrica, dimenzija, broj_mina)*
+#### (c) *prava_matrica(matrica, dimenzija, broj_mina)* {-}
 
 Ovde treba da napišemo funkciju koja nam kaže da li je matrica validna tabla
 minolovca. Ova funkcija je implementirana u `minesolver/boards.R` kao
@@ -462,7 +462,7 @@ Naravno, tabla je validna.
 
 Ovaj zadatak se takodje vrlo jednostavno rešava.
 
-#### (a) *generator_table(dimenzija, broj_mina)*
+#### (a) *generator_table(dimenzija, broj_mina)* {-}
 
 Ovde ćemo otkriti kako smo pravili table u prethodnim primerima. Razočaraćemo se
 jer je i ovo već uradjeno u `minesolver/boards.R` pa nećemo dva puta istu stvar
@@ -481,7 +481,7 @@ Generišimo radi primera jednu 9x9 tablu sa 10 mina.
 print(generator_table(9, 10))
 ```
 
-#### (b) *sakrivanje_polja(matrica, broj_polja)*
+#### (b) *sakrivanje_polja(matrica, broj_polja)* {-}
 
 I ova funkcija postoji u `minesolver/boards.R`, tako da se nećemo zadržavati na
 njoj, jednostavno sakrije sve mine i još slučajno odabranih `broj_polja` polja.
@@ -497,7 +497,7 @@ tabla <- generator_table(9, 10)
 print(sakrivanje_polja(tabla, 20))
 ```
 
-#### (c) Prosečan broj otvorenih polja potrebnih za rešavanje
+#### (c) Prosečan broj otvorenih polja potrebnih za rešavanje {-}
 
 Ovo je prilično zanimljiv zadatak, koji ćemo rešiti na prilično zanimljiv način.
 Naime, potrebno je da odredimo koliko je, u proseku, potrebno da bude otvoreno
