@@ -158,6 +158,9 @@ Sada možemo da predjemo na pravljenje modela.
 
 #### Modeli
 
+Napravićemo 3 modela (LDA, QDA i multinomni) i testirati njihovu preciznost da
+ustanovimo koji je najbolji.
+
 ##### LDA
 
 Prvi na listi modela koje ćemo da probamo je LDA model. Jednostavno se kreira
@@ -263,7 +266,7 @@ bolji model.
 
 Da li će multinomni model biti bolji čak i od QDA? Saznaćemo u sledećem odeljku.
 
-### Multinomni model
+##### Multinomni
 
 Za kraj ostaje da proverimo i multinomni model. Njega pravimo koristeći se
 paketom `nnet` na sledeći način:
@@ -274,7 +277,7 @@ library(nnet)
 mnm_model <- multinom(class ~ . , data = tr_set, maxit = 1e3)
 ```
 
-Nažalost nemamo način da vizualizujemo podelu koji napravi multinom, pa ćemo
+Nažalost nemamo način da vizuelizujemo podelu koji napravi multinom, pa ćemo
 odmah preći na testiranje.
 
 Prvo skup za obučavanje
@@ -307,3 +310,5 @@ Ne iznenadjuje da nam je i ovde preciznost 100%. Dakle multinomni model nam je
 najbolji, budući da smo sve slike tačno klasifikovali. Njega naravno i koristimo
 pri igranju Minesweeper igre na Windows-u.
 
+
+### Četvrti zadatak

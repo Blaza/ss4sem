@@ -101,9 +101,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#modeli"><span class="toc-section-number">2.1.1.4</span> Modeli</a><ul>
 <li><a href="#lda"><span class="toc-section-number">2.1.1.4.1</span> LDA</a></li>
 <li><a href="#qda"><span class="toc-section-number">2.1.1.4.2</span> QDA</a></li>
+<li><a href="#multinomni"><span class="toc-section-number">2.1.1.4.3</span> Multinomni</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#multinomni-model"><span class="toc-section-number">2.1.2</span> Multinomni model</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -662,10 +662,8 @@ predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(qda_mo
 <p>Na kontrolnom skupu smo opet sve pogodili! Preciznost je 100%, kao i za LDA, premda smo ovaj put bolje prošli na skupu za obučavanje, pa je QDA za nijansu bolji model.</p>
 <p>Da li će multinomni model biti bolji čak i od QDA? Saznaćemo u sledećem odeljku.</p>
 </div>
-</div>
-</div>
-<div id="multinomni-model" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Multinomni model</h3>
+<div id="multinomni" class="section level5">
+<h5><span class="header-section-number">2.1.1.4.3</span> Multinomni</h5>
 <p>Za kraj ostaje da proverimo i multinomni model. Njega pravimo koristeći se paketom <code>nnet</code> na sledeći način:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nnet)
 
@@ -679,7 +677,7 @@ mnm_model &lt;-<span class="st"> </span><span class="kw">multinom</span>(class <
 ## iter  50 value 0.003788
 ## final  value 0.000058 
 ## converged</code></pre>
-<p>Nažalost nemamo način da vizualizujemo podelu koji napravi multinom, pa ćemo odmah preći na testiranje.</p>
+<p>Nažalost nemamo način da vizuelizujemo podelu koji napravi multinom, pa ćemo odmah preći na testiranje.</p>
 <p>Prvo skup za obučavanje</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get predicted classes</span>
 predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(mnm_model, tr_set[ , <span class="op">-</span><span class="dv">3</span>])
@@ -717,6 +715,8 @@ predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(mnm_mo
 <span class="kw">mean</span>(ct_set[ , <span class="dv">3</span>] <span class="op">==</span><span class="st"> </span>predictions)</code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Ne iznenadjuje da nam je i ovde preciznost 100%. Dakle multinomni model nam je najbolji, budući da smo sve slike tačno klasifikovali. Njega naravno i koristimo pri igranju Minesweeper igre na Windows-u.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
