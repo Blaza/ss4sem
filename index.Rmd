@@ -5,7 +5,7 @@ output:
   prettydoc::html_pretty:
     theme: leonids
     toc: true
-    toc_depth: 4
+    toc_depth: 5
     css: style.css
     df_print: paged
     number_sections: true
@@ -35,4 +35,7 @@ devtools::install_github("blaza/ssoftver")
 Prvo ćemo rešiti zadatke vezane za `imager` paket.
 
 ```{r child = '1-slike.Rmd'}
+```
+
+```{r child = '2-mines.Rmd'}
 ```

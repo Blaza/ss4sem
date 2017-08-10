@@ -1,0 +1,309 @@
+# Minolovac
+
+Sav kod potreban za rešavanje dela seminarskog koji se tiče Minolovca se nalazi
+na Github-u, na repozitorijumu
+[`blaza/minesolver`](https://github.com/blaza/minesolver). Funkcije iz ovog
+projekta nisam stavio u paket `ssoftveR` jer mislim da im tu nije mesto, budući
+da direktno rešavaju veliki deo zadataka, pa nisu za širu upotrebu.
+
+Pored toga, u `minesolver` projektu se nalazi i kod za automatsko igranje
+Minesweeper igre (Windows 7 verzija igre). Fajlovi koji to regulišu su
+[`player.R`](https://github.com/Blaza/minesolveR/blob/master/player.R) koji na
+osnovu slike table daje sledeći potez, `automine.exe` koji predstavlja program
+koji zapravo klikće po ekranu i [`play.R`](https://github.com/Blaza/minesolveR/blob/master/play.R)
+koji ostvaruje komunikaciju izmedju prethodna dva programa. Kako to sve radi
+može se videti na [ovom video klipu](https://www.youtube.com/watch?v=8VdXCg1oemQ).
+
+Zato ćemo prvo, koristeći paket `git2r`, preuzeti sve skripte iz projekta
+`minesolver`, pa preći na rešenja zadataka, koja su velikim delom sadržana
+u projektu. Funkcije koje se koriste su dokumentovane u kodu, pa se nećemo
+previše baviti time, već ćemo po potrebi predstaviti neke ideje koje su bitnije.
+
+Dakle, da preuzmemo projekat...
+```{r, cache=TRUE}
+# kloniramo u folder minesolver
+git2r::clone("https://github.com/blaza/minesolver", "./minesolver")
+```
+
+Ovime smo "klonirali" repozitorijum sa Github-a koristeći u pozadini komandu
+[`git clone`](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone).
+Za svakog ko želi da mu prosečna udaljenost od računara tokom dana bude manja od
+2m, od ogromnog je značaja da nauči da koristi `git`(https://git-scm.com/).
+Neki izvori za učenje koje sam našao su:
+
+- [Happy Git with R](http://happygitwithr.com/) - namenjen konkretno
+  R korisnicima
+- [Git and Github - R packages by Hadley Wickham](R packages by Hadley Wickham)
+  - takodje namenjen R korisnicima, kraći od Happy Git with R, ali može da
+    sadrži neko zrno znanja koje nema tamo.
+- [Try Git](https://try.github.io/) - 15-minutni uvod u Git
+
+Dobro, da se vratimo na temu... Predjimo na zadatke.
+
+## Zadaci
+
+### Treći zadatak
+U ovom zadatku nam je posao da odredimo dobar model za odredjivanje koji broj se
+nalazi na polju sa table Minolovca. Slike koje koristimo za obučavanje se nalaze
+u folderu `minesolver/mines_img/`, a slike koje ćemo koristiti za testiranje
+modela su u `minesolver/mines_img/control`.
+
+#### Skup za obučavanje
+
+Da ne bismo ručno klasifikovali polja za skupove za obučavanje i kontrolu,
+iskoristićemo fajlove `minesolver/tr_cls.RDS` i `minesolver/ct_cls.RDS` koje smo
+pripremili ranije. Oni sadrže klase polja (brojeve koji se nalaze na poljima), a
+polja ćemo izvući sa slika i kombinovati klase i prediktore da dobijemo skup za
+obučavanje i kotrolni skup. Počećemo od skupa za obučavanje. Ovo je blago
+modifikovano parče koda iz fajla `minesolver/mines_training.R` koji je izvorno
+korišćen za model.
+
+```{r, cache=TRUE}
+library(imager)
+library(ssoftveR)
+source("minesolver/mines_predictors.R")
+
+# load all images for training
+files <- Sys.glob(paste("minesolver", "mines_img/*.png", sep = '/'))
+images <- lapply(files, load.image)
+
+
+# set predictors we want to use
+predictors <- c("x_arc_length", "y_arc_length")
+
+# extract fields from images
+ext_fields <- lapply(images, function(im) {
+                   im <- im %>% resize(780, 780)
+                   extract_fields(process_img(im),
+                                  get_boundaries(decolor(im), prob = 0.95))
+              })
+
+# combine the fields into one list
+fields <- do.call(c, ext_fields)
+
+# calculate predictors for the fields
+tr_preds <- get_field_predictors(predictors, fields, FALSE)
+
+# load saved training classes
+tr_cls <- readRDS("minesolver/tr_cls.RDS")
+
+# combine predictors and classes into one training set data.frame
+tr_set <- cbind(tr_preds, class = tr_cls)
+```
+
+Ovime smo generisali skup za obučavanje. Pogledajmo kako izgleda pa ćemo
+objasniti prediktore koje koristimo.
+
+```{r, fig.width=8, fig.height=5, fig.align="center", no.margin=TRUE, cache=TRUE}
+library(ggplot2)
+ggplot(tr_set, aes(x = x_arc_length, y = y_arc_length, color = class)) +
+    geom_point()
+```
+
+Vidimo da su klase lepo razdvojene, možemo očekivati da ćemo imati dobar model.
+
+#### Prediktori
+
+Vizuelizujmo sada prediktore koje koristimo, jer slika govori hiljadu reči.
+Kod koji ovo radi se nalazi u fajlu `minesolver/pred_visual.R`.
+
+```{r, fig.width=8, fig.height=5, fig.align="center", no.margin=TRUE, cache=TRUE, warning=FALSE}
+source("minesolver/pred_visual.R")
+visualise_predictors(fields, tr_cls)
+```
+
+Vidi se da svaki broj ima različit oblik krive koja predstavlja gustinu piksela
+po x i y koordinatama. Kao prediktore `x_arc_length` i `y_arc_length` mi
+jednostavno koristimo odgovarajuće dužine tih krivih.
+
+#### Kontrolni skup
+
+Hajde sad da formiramo i kontrolni skup. Na skoro isti način to radimo kao i što
+smo skup za obučavanje.
+
+```{r, cache=TRUE}
+library(imager)
+library(ssoftveR)
+source("minesolver/mines_predictors.R")
+
+# load all images for training
+files <- Sys.glob(paste("minesolver", "mines_img/control/*.png", sep = '/'))
+images <- lapply(files, load.image)
+
+
+# set predictors we want to use
+predictors <- c("x_arc_length", "y_arc_length")
+
+# extract fields from images
+ext_fields <- lapply(images, function(im) {
+                   im <- im %>% resize(780, 780)
+                   extract_fields(process_img(im),
+                                  get_boundaries(decolor(im), prob = 0.95))
+              })
+
+# combine the fields into one list
+fields <- do.call(c, ext_fields)
+
+# calculate predictors for the fields
+ct_preds <- get_field_predictors(predictors, fields, FALSE)
+
+# load saved test classes
+ct_cls <- readRDS("minesolver/ct_cls.RDS")
+
+# combine predictors and test into one control set data.frame
+ct_set <- cbind(ct_preds, class = ct_cls)
+```
+
+Sada možemo da predjemo na pravljenje modela.
+
+#### Modeli
+
+##### LDA
+
+Prvi na listi modela koje ćemo da probamo je LDA model. Jednostavno se kreira
+koristeći funkciju `lda` iz `MASS` paketa i generisani skup za obučavanje.
+
+```{r}
+library(MASS)
+
+lda_model <- lda(class ~ . , data = tr_set)
+```
+
+Koristeći paket `klaR` možemo videti podelu koju napravi LDA model u prostoru.
+
+```{r, fig.width=8, fig.height=5, fig.align="center", no.margin=TRUE, cache=TRUE, warning=FALSE}
+library(klaR)
+
+partimat(class ~ . , data = tr_set, method = "lda")
+```
+
+Pogledajmo kako se pokazao ovaj model, prvo na skupu za obučavanje
+```{r}
+# get predicted classes
+predictions <- predict(lda_model, tr_set[ , -3])$class
+
+# compare real values and predicted
+table(tr_set[ , 3], predictions)
+
+# see the accuracy
+mean(tr_set[ , 3] == predictions)
+```
+
+Dakle imamo tačnost 99.69% na skupu za obučavanje, iz tabele vidimo da je
+pomešao zatvoreno polje i minu 3 puta.
+
+Predjimo na kontrolni skup:
+
+```{r}
+# get predicted classes
+predictions <- predict(lda_model, ct_set[ , -3])$class
+
+# compare real values and predicted
+table(ct_set[ , 3], predictions)
+
+# see the accuracy
+mean(ct_set[ , 3] == predictions)
+```
+
+Na kontrolnom skupu smo sve pogodili! Preciznost je 100%.
+
+Ovo će biti teško pobediti. Idemo na QDA model.
+
+##### QDA
+
+Ponovićemo isti postupak kao i za LDA model
+
+```{r}
+library(MASS)
+
+qda_model <- qda(class ~ . , data = tr_set)
+```
+
+Koristeći paket `klaR` možemo videti i podelu koju napravi QDA model u prostoru.
+
+```{r, fig.width=8, fig.height=5, fig.align="center", no.margin=TRUE, cache=TRUE, warning=FALSE}
+library(klaR)
+
+partimat(class ~ . , data = tr_set, method = "qda")
+```
+
+Proverimo model na skupu za obučavanje...
+
+```{r}
+# get predicted classes
+predictions <- predict(qda_model, tr_set[ , -3])$class
+
+# compare real values and predicted
+table(tr_set[ , 3], predictions)
+
+# see the accuracy
+mean(tr_set[ , 3] == predictions)
+```
+
+Dakle imamo tačnost 99.89% na skupu za obučavanje, iz tabele vidimo da je
+pomešao zatvoreno polje i minu jedanput. I LDA i QDA imaju blagi problem sa
+minama i zatvorenim poljima iz nekog razloga, ali QDA je ipak tačniji.
+
+Predjimo na kontrolni skup:
+
+```{r}
+# get predicted classes
+predictions <- predict(qda_model, ct_set[ , -3])$class
+
+# compare real values and predicted
+table(ct_set[ , 3], predictions)
+
+# see the accuracy
+mean(ct_set[ , 3] == predictions)
+```
+
+Na kontrolnom skupu smo opet sve pogodili! Preciznost je 100%, kao i za LDA,
+premda smo ovaj put bolje prošli na skupu za obučavanje, pa je QDA za nijansu
+bolji model.
+
+Da li će multinomni model biti bolji čak i od QDA? Saznaćemo u sledećem odeljku.
+
+### Multinomni model
+
+Za kraj ostaje da proverimo i multinomni model. Njega pravimo koristeći se
+paketom `nnet` na sledeći način:
+
+```{r}
+library(nnet)
+
+mnm_model <- multinom(class ~ . , data = tr_set, maxit = 1e3)
+```
+
+Nažalost nemamo način da vizualizujemo podelu koji napravi multinom, pa ćemo
+odmah preći na testiranje.
+
+Prvo skup za obučavanje
+
+```{r}
+# get predicted classes
+predictions <- predict(mnm_model, tr_set[ , -3])
+
+# compare real values and predicted
+table(tr_set[ , 3], predictions)
+
+# see the accuracy
+mean(tr_set[ , 3] == predictions)
+```
+
+Na skupu za obučavanje sve pogadjamo! Da vidimo i kontrolni skup...
+
+```{r}
+# get predicted classes
+predictions <- predict(mnm_model, ct_set[ , -3])
+
+# compare real values and predicted
+table(ct_set[ , 3], predictions)
+
+# see the accuracy
+mean(ct_set[ , 3] == predictions)
+```
+
+Ne iznenadjuje da nam je i ovde preciznost 100%. Dakle multinomni model nam je
+najbolji, budući da smo sve slike tačno klasifikovali. Njega naravno i koristimo
+pri igranju Minesweeper igre na Windows-u.
+

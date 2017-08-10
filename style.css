@@ -30,7 +30,7 @@ a {
     color: #00702d;
 }
 a:hover, a:focus {
-    color: rgba(0, 112, 45, 0.85);
+    color: rgba(0, 112, 45, 0.80);
     text-decoration: none;
 }
 

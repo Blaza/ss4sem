@@ -1,9 +1,8 @@
 # Rad sa slikama
-
-## Uvodna priča
-Pre nego li predjemo na sama rešenja zadataka, ukratko ćemo opisati nekoliko
+Pre negoli predjemo na sama rešenja zadataka, ukratko ćemo opisati nekoliko
 funkcija iz paketa `ssoftveR` koje se koriste.
 
+## Uvodna priča
 Naime, u ovim zadacima uvek je potrebno uraditi neku manipulaciju sa oblikom na
 slici. U prvom zadatku je taj oblik kvadrat, u drugom može biti i krug, ali i
 neki nepoznati (treba da prepoznamo da li je krug/pravougaonik ili ne).
@@ -29,7 +28,7 @@ Ona ima dosta oblika na sebi koje ćemo detektovati i klasifikovati.
 Pogledajmo odmah krajnji rezultat, da znamo šta nas čeka, pa ćemo proći korak
 po korak šta se radi.
 
-```{r, fig.width=6, fig.height=9, fig.align="center", results="hide"}
+```{r, fig.width=6, fig.height=9, fig.align="center", results="hide", cache=TRUE}
 library(ssoftveR)
 
 # stavicemo dve slike jednu ispod druge i moramo da podesimo margine
@@ -87,11 +86,11 @@ Pogledajmo rezultat koji dobijamo kad uradimo ovo za našu sliku:
 plot(solid_blobs(im), axes = FALSE)
 ```
 
-Svi oblici su postali beli (`=TRUE`), ali, nažalost, i za neke duge linije smo
-zaključili da su homogene. Postoji način da se to prevazidje[^2], što radi
-`get_shapes` funkcija (videli smo da daje dobar rezultat), ali možemo i samo da
-povećamo veličinu okoline koju gledamo, npr. neka je sada dužina stranice krsta
-9, a ne 5.
+Svi oblici su postali beli (` = TRUE`), ali, nažalost, i za neke duge linije smo
+zaključili da su homogene. Postoji način da se to prevazidje, što radi
+`get_shapes` funkcija[^2] (videli smo da daje dobar rezultat), ali možemo i samo
+da povećamo veličinu okoline koju gledamo, npr. neka je sada dužina stranice
+krsta 9, a ne 5.
 
 ```{r, fig.width=4.5, fig.height=3, fig.align="center", no.margin=TRUE}
 blobs <- solid_blobs(im, cr_n = 9)
@@ -379,3 +378,6 @@ second(im2, circle = TRUE)
 ```
 
 I to bi bilo sve što se tiče rada sa slikama.
+
+-----
+
