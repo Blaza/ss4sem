@@ -1,9 +1,11 @@
 #TOC {
     text-align: left !important;
+    font-size: 0.8em;
 }
 
 #TOC ul {
-    padding-left: 20px;
+    padding-left: 0px;
+    list-style-type: none;
 }
 
 .TOC-title {
