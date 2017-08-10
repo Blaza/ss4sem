@@ -9,7 +9,10 @@
 }
 
 #TOC a {
-    color: rgba(0,0,0,0.87);
+    color: rgba(0,0,0,0.9);
+}
+#TOC a:hover {
+    color: rgba(15, 77, 146, 0.95);
 }
 
 .TOC-title {
@@ -20,6 +23,26 @@
     display: block;
     color: #0F4D92;
     font-size: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: #00702d;
+}
+a:hover, a:focus {
+    color: rgba(0, 112, 45, 0.85);
+    text-decoration: none;
+}
+
+th {
+    background-color: rgba(15, 77, 146, 0.90);
+    color: #fff;
+}
+
+code {
+    color: rgba(15, 77, 146, 0.925);
+    border-radius: 2px;
+    white-space: nowrap;
 }
 
 thead > tr > th {

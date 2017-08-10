@@ -279,7 +279,7 @@ i njihove boje. Ovde koristimo jako pametnu funkciju `rgb2col` iz paketa
 `ssoftveR`, koja odredjuje tačno ime boje (iz palete dostupne R-u) na osnovu
 njenih RGB vrednosti. Ona u suštini bira onu boju koja je najbliža datoj RGB
 vrednosti, ali koristeći naprednu metriku datu u `colorscience` paketu. Ta
-metrika je [deltaE2000](https://en.wikipedia.org/wiki/Color_difference#CIEDE2000)
+metrika je [deltaE2000](https://en.wikipedia.org/wiki/Color_difference#CIEDE2000).
 
 ```{r, results="hide"}
 shape_names_and_colors <- function(im, shapes = NULL) {
