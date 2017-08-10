@@ -18,6 +18,7 @@ knit_hooks$set(no.margin = function(before, options, envir) {
 })
 ```
 
+# Seminarski rad {-}
 
 U ovom dokumentu će biti predstavljena rešenja zadataka sa seminarskog i donekle
 detaljno objašnjene ideje kako je svaki zadatak uradjen. Za potrebe ovog
