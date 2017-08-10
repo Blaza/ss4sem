@@ -9,5 +9,5 @@ bookdown::gitbook:
       before: |
         <li><a href="./index.html">Statistički softver 4 - Seminarski rad</a></li>
       after: |
-        <li><a href="https://github.com/blaza/ss4sem" target="blank">This books's Github repo</a></li>
+        <li><a href="https://github.com/blaza/ss4sem" target="blank">Github stranica seminarskog</a></li>
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
