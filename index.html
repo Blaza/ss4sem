@@ -973,7 +973,7 @@ solving_probs &lt;-<span class="st"> </span><span class="kw">get_solving_probs</
 <pre><code>## External IP for instance d16x16 : 35.195.252.78</code></pre>
 <pre><code>## Running samples...</code></pre>
 <pre><code>## Auto-refreshing stale OAuth token.</code></pre>
-<p>Oko 7 minuta, nije loše.</p>
+<p>Trajalo je oko 7 minuta, nije loše.</p>
 <p>Hajde da vidimo rezultate probamo da dodjemo do nekog zaključka.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">solving_probs</code></pre></div>
 <pre><code>## $d9x9
@@ -987,6 +987,9 @@ solving_probs &lt;-<span class="st"> </span><span class="kw">get_solving_probs</
 ## 0.9903846 0.9903846 0.9759615 0.8942308 0.9423077 0.9230769 0.8413462 
 ##        45        50        55        60 
 ## 0.7788462 0.7932692 0.6923077 0.6105769</code></pre>
+<p>Ovde su prikazane verovatnoće rešavanja table ako je <em>sakriven</em> odredjen broj polja. Dakle, kad su sakrivena 3 polja (tj. otvoreno 78 polja), uvek može da reši tablu.</p>
+<p>Za 9x9 tablu nema nekog jako naglog skoka ka velikom procentu, kod 21 sakrivenih polja je značajna razlika ali je ipak i dalje samo 81% procenat rešenih tabli. Malo manji skok, ali vidljiv se desio kod 12 sakrivenih polja, pri čemu smo tad prešli 95% rešenih tabli, tako da bi to mogli da kažemo kao odgovor na postavljeno pitanje, tj. da je u proseku dovoljno da bude 59 otvorenih polja da bi tabla bila razrešiva.</p>
+<p>Za 16x16 tablu imamo jako čudan rezultat, budući da sa 40 na 35 zatvorenih polja imamo veliki skok i do 30 raste do čak 94% uspešnosti, ali zatim naglo pada na 89% kod 25, pa imamo nagli skok na čak 97% za 20 sakrivenih polja, odakle raste postepeno do 99%. Dakle, u ovom slučaju mogli bismo da kao odgovor na pitanje kažemo da je prosečno dovoljno da bude 20 sakrivenih polja, tj. 196 otvorenih polja da bi tabla bila razrešiva.</p>
 </div>
 </div>
 </div>
