@@ -1,6 +1,9 @@
 #TOC {
     text-align: left !important;
     font-size: 0.8em;
+    height: 85%;
+    overflow: auto;
+    margin: 10px -25px -80px -15px;
 }
 
 #TOC ul {
@@ -17,6 +20,7 @@
 
 .TOC-title {
     font-size: 1.3em;
+    padding-left: 10px;
 }
 
 .cover-card .author_name {

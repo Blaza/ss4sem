@@ -312,3 +312,187 @@ pri igranju Minesweeper igre na Windows-u.
 
 
 ### Četvrti zadatak
+Ovaj zadatak se značajno lakše radi jer je praktično već rešen u `minesolver`,
+ali ćemo opisati ukratko principe na kojim funkcionišu rešenja.
+
+Prve svega, opisaćemo jedan objekat koji se prožima kroz sve zadatke i čini
+osnovu svih zadataka koji imaju veze sa logikom i pravilima minolovca. To je
+"matrica okolina". Ona nam omogućava da na jako brz i lak način implementiramo
+logiku minolovca.
+
+Matricu okolina pravimo tako što za svako polje uzmemo sva polja koja ga
+okružuju i stavimo ih u jedan red matrice. Da vidimo kako to izgleda (koristimo
+tablu 3x3 sa 3 mine koju smo u tajnosti napravili, a videćemo i kako kasnije):
+
+```{r, echo=FALSE, results="hide"}
+source("minesolver/boards.R")
+board <- generate_board(3, 3)
+```
+
+```{r, results="markup"}
+# fajl u kom je kod za matrice okolina
+source("minesolver/neighbours.R")
+
+# stampamo tablu
+print(board)
+# pravimo matricu okolina
+print(get_neighbour_matrix(board))
+```
+
+U srednjoj koloni je (odmotana u vektor) matrica koja predstavlja tablu,
+a nazivi kolona pokazuju u kom pravcu je odredjeno polje od srednjeg. Tako
+u svakom redu imamo okolinu srednjeg polja, s tim da za polja na ivici table
+stoji NA u pravcima na kojima ne postoji ništa.
+
+U principu jedino pravilo minolovca je da oko svakog polja ima tačno onoliko
+mina koliko piše na polju. Ova matrica okolina nam omogućava da jednostavno
+radimo sa tom logikom budući da se sve svodi na brojanje mina u svakom redu
+i poredjenjem sa srednjim brojem.
+
+Predjimo na konkretna rešenja zadataka.
+
+#### (a) *resi_tablu(matrica, ...)*
+Treba da definišemo funkciju `resi_tablu(matrica, ...)` koja rešava datu tablu
+Minolovca.
+
+```{r}
+source("minesolver/solver.R")
+resi_tablu <- function(matrica, broj_mina) solve_board(matrica, broj_mina)
+```
+
+Funkcija `solve_board` rešava tablu primenjujući uzastopno dve tehnike. Prva
+tehnika je direktna upotreba pravila Minolovca da se odrede mesta koja su
+sigurno mine ili sigurno nisu mine. To je najosnovnija logika.
+
+Druga tehnika je "metod kontradikcije". On funkcioniše tako što nadjemo sva
+neotvorena polja koja se nalaze uz otvorena (za ona polja koja su okružena samo
+zatvorenim nemamo nikakvu informaciju za rešavanje), pa krenemo redom
+i ponavaljamo sledeći postupak za svako od tih polja:
+
+1. Stavimo minu na polje
+2. Rešimo tablu koristeći osnovnu logiku
+3. Ako smo dobili kontradiktornu (nevalidnu) tablu, označimo da na tom polju ne
+   sme biti mina.
+
+Analogan postupak ponovimo i stavljajući na početku da na polju nije mina
+i vidimo da li dolazi do kontradikcije, pa da mora da bude mina na tom polju.
+
+#### (b) *MK_simulacija(matrica, ...)*
+Zadatak je da od preostalih neotvorenih polja odredimo ono koje ima najveću
+i ono koje ima najmanju verovatnoću da ima minu na sebi.
+
+```{r}
+source("minesolver/solver.R")
+
+MK_simulacija <- function(matrica, broj_mina) {
+    # odredimo verovatnoce pojave matrica za svako polje
+    prob_mat <- get_mine_probs(matrica, broj_mina, pre_solve = TRUE)
+    # odstampamo da vidimo verovatnoce
+    print(prob_mat)
+
+    # nadjemo indekse otvorenih polja
+    open_ind <- which(matrica != "z")
+    # i stavimo ih na NA da nam ne smetaju
+    prob_mat[open_ind] <- NA
+
+    # vratimo indekse polja sa najmanjom, odnosno najvecom verovatnocom
+    d <- dim(matrica)
+
+    list("min_prob" = arrayInd(which.min(prob_mat), d),
+         "max_prob" = arrayInd(which.max(prob_mat), d))
+}
+```
+
+Proverimo na primeru. Opet tajno učitavamo dve table...
+
+```{r, echo=FALSE, results="markup"}
+source("minesolver/boards.R")
+
+board1 <- generate_board(9, 10)
+board1 <- hide_random(board1, 8)
+
+board2 <- generate_board(9, 10)
+board2[7:9, 7:9] <- "z"
+print(board1)
+print(board2)
+```
+... i da vidimo rezultat:
+
+```{r, cache=TRUE, results="markup"}
+print(MK_simulacija(board1, 10))
+
+print(MK_simulacija(board2, 10))
+```
+
+Vidimo da smo prvu tablu rešili potpuno i sve verovatnoće su 1 ili 0, dok u
+drugoj polja koja nismo uspeli da rešimo sva imaju oko 50% šanse da budu mine,
+što je i očekivano budući da ne možemo da odredimo gde je mina na tim poljima
+sem da nagadjamo.
+
+
+#### (c) *prava_matrica(matrica, dimenzija, broj_mina)*
+
+Ovde treba da napišemo funkciju koja nam kaže da li je matrica validna tabla
+minolovca. Ova funkcija je implementirana u `minesolver/boards.R` kao
+`valid_board` funkcija, tako da ćemo samo iskoristiti nju.
+
+Ova funkcija je vrlo jednostavna za implementaciju kada imamo matrice okolina.
+Naime samo se proveri da li u svakom redu matrice okolina broj polja označenih
+sa "m" odgovara broju na srednjem elementu u redu.
+
+```{r}
+prava_matrica <- function(matrica, dimenzija, broj_mina) {
+    valid_board(matrica, broj_mina)
+}
+```
+
+Čisto radi demonstracije proverimo da li je naša prva tabla validna:
+
+```{r}
+prava_matrica(board, 3, 3)
+```
+
+Naravno, tabla je validna.
+
+### Peti zadatak
+
+Ovaj zadatak se takodje vrlo jednostavno rešava.
+
+#### (a) *generator_table(dimenzija, broj_mina)*
+
+Ovde ćemo otkriti kako smo pravili table u prethodnim primerima. Razočaraćemo se
+jer je i ovo već uradjeno u `minesolver/boards.R` pa nećemo dva puta istu stvar
+pisati. Način na koji radi je inverzan proveri validnosti table. Naime, prvo
+razbacamo mine na praznu matricu, pa koristeći matricu okolina popunimo brojeve
+u sredini tako da oslikavaju broj mina u svom redu.
+
+```{r}
+source("minesolver/boards.R")
+generator_table <- generate_board
+```
+
+Generišimo radi primera jednu 9x9 tablu sa 10 mina.
+
+```{r}
+print(generator_table(9, 10))
+```
+
+#### (b) *sakrivanje_polja(matrica, broj_polja)*
+
+I ova funkcija postoji u `minesolver/boards.R`, tako da se nećemo zadržavati na
+njoj, jednostavno sakrije sve mine i još slučajno odabranih `broj_polja` polja.
+
+```{r}
+source("minesolver/boards.R")
+sakrivanje_polja <- hide_random
+```
+
+Demonstracija:
+```{r}
+tabla <- generator_table(9, 10)
+print(sakrivanje_polja(tabla, 20))
+```
+
+#### (c) Prosečan broj otvorenih polja potrebnih za rešavanje
+
+

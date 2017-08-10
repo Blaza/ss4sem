@@ -303,6 +303,7 @@ Proverimo je na našoj slici
 ```{r, results="markup"}
 shape_names_and_colors(im)
 ```
+
 Dakle ovo je neka boja lososa, recimo...
 
 Sada jednostavno rešavamo drugi zadatak u funkciji `second`.
