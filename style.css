@@ -4,12 +4,22 @@
 }
 
 #TOC ul {
-    padding-left: 0px;
+    padding-left: 10px;
     list-style-type: none;
+}
+
+#TOC a {
+    color: rgba(0,0,0,0.87);
 }
 
 .TOC-title {
     font-size: 1.3em;
+}
+
+.cover-card .author_name {
+    display: block;
+    color: #2f3184;
+    font-size: 2em;
 }
 
 thead > tr > th {
