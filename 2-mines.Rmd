@@ -566,7 +566,7 @@ solving_probs
 ```
 
 Ovde su prikazane verovatnoće rešavanja table ako je *sakriven* odredjen broj
-polja. Dakle, kad su sakrivena 3 polja (tj. otvoreno 78 polja), uvek može da
+polja. Dakle, kad su sakrivena 3 polja (tj. otvoreno 68 polja), uvek može da
 reši tablu.
 
 Za 9x9 tablu nema nekog jako naglog skoka ka velikom procentu, kod 21 sakrivenih
