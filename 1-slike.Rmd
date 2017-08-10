@@ -195,7 +195,7 @@ način razlikovanja paralelograma i trapeza.
 Kada smo to demistifikovali, prodjimo jedan primer klasifikacije, da vidimo
 šta radi i funkcja `classify_shape`. Klasifikovaćemo naš trougao od ranije.
 
-```{r, results="markup", result="asis"}
+```{r, results="asis"}
 # uzmemo sve prediktore za nas shape. vracamo data.frame i ako negde imamo NA,
 # pretvorimo ga u -1, da ne bismo imali problema sa modelom.
 predictors <- get_shape_predictors(shape, df = TRUE, na_replacement = -1)
@@ -301,7 +301,7 @@ shape_names_and_colors <- function(im, shapes = NULL) {
 
 Proverimo je na našoj slici
 ```{r, results="markup"}
-shape_names_and_colors(im)
+print(shape_names_and_colors(im))
 ```
 
 Dakle ovo je neka boja lososa, recimo...

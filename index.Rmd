@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 5
     css: style.css
-    df_print: paged
+    df_print: kable
     number_sections: true
 ---
 

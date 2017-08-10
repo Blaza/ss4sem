@@ -51,8 +51,17 @@ code {
 
 thead > tr > th {
     text-align: right !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 6px;
 }
 tbody > tr > td {
     text-align: right !important;
+}
+
+table {
+    width: 75%;
+    margin: 20px auto;
 }
 

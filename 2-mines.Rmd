@@ -34,11 +34,11 @@ Neki izvori za učenje koje sam našao su:
 - [Happy Git with R](http://happygitwithr.com/) - namenjen konkretno
   R korisnicima
 - [Git and Github - R packages by Hadley Wickham](R packages by Hadley Wickham)
-  - takodje namenjen R korisnicima, kraći od Happy Git with R, ali može da
+   \- takodje namenjen R korisnicima, kraći od Happy Git with R, ali može da
     sadrži neko zrno znanja koje nema tamo.
 - [Try Git](https://try.github.io/) - 15-minutni uvod u Git
 
-Dobro, da se vratimo na temu... Predjimo na zadatke.
+Dobro, da se vratimo na temu... Prelazimo na zadatke.
 
 ## Zadaci
 
@@ -186,7 +186,7 @@ Pogledajmo kako se pokazao ovaj model, prvo na skupu za obučavanje
 predictions <- predict(lda_model, tr_set[ , -3])$class
 
 # compare real values and predicted
-table(tr_set[ , 3], predictions)
+print(table(tr_set[ , 3], predictions))
 
 # see the accuracy
 mean(tr_set[ , 3] == predictions)
@@ -202,7 +202,7 @@ Predjimo na kontrolni skup:
 predictions <- predict(lda_model, ct_set[ , -3])$class
 
 # compare real values and predicted
-table(ct_set[ , 3], predictions)
+print(table(ct_set[ , 3], predictions))
 
 # see the accuracy
 mean(ct_set[ , 3] == predictions)
@@ -237,7 +237,7 @@ Proverimo model na skupu za obučavanje...
 predictions <- predict(qda_model, tr_set[ , -3])$class
 
 # compare real values and predicted
-table(tr_set[ , 3], predictions)
+print(table(tr_set[ , 3], predictions))
 
 # see the accuracy
 mean(tr_set[ , 3] == predictions)
@@ -254,7 +254,7 @@ Predjimo na kontrolni skup:
 predictions <- predict(qda_model, ct_set[ , -3])$class
 
 # compare real values and predicted
-table(ct_set[ , 3], predictions)
+print(table(ct_set[ , 3], predictions))
 
 # see the accuracy
 mean(ct_set[ , 3] == predictions)
@@ -287,7 +287,7 @@ Prvo skup za obučavanje
 predictions <- predict(mnm_model, tr_set[ , -3])
 
 # compare real values and predicted
-table(tr_set[ , 3], predictions)
+print(table(tr_set[ , 3], predictions))
 
 # see the accuracy
 mean(tr_set[ , 3] == predictions)
@@ -300,7 +300,7 @@ Na skupu za obučavanje sve pogadjamo! Da vidimo i kontrolni skup...
 predictions <- predict(mnm_model, ct_set[ , -3])
 
 # compare real values and predicted
-table(ct_set[ , 3], predictions)
+print(table(ct_set[ , 3], predictions))
 
 # see the accuracy
 mean(ct_set[ , 3] == predictions)
@@ -379,7 +379,11 @@ i vidimo da li dolazi do kontradikcije, pa da mora da bude mina na tom polju.
 
 #### (b) *MK_simulacija(matrica, ...)*
 Zadatak je da od preostalih neotvorenih polja odredimo ono koje ima najveću
-i ono koje ima najmanju verovatnoću da ima minu na sebi.
+i ono koje ima najmanju verovatnoću da ima minu na sebi. Ovo radimo u funkciji
+`get_mine_probs` iz `minesolver/solver.R` tako što preostali broj mina mnogo
+puta razbacamo po zatvorenim poljima i vidimo da li je tabla validna, pa na
+kraju vidimo koliko puta je procentualno svako polje bilo prisutno u validnoj
+tabli.
 
 ```{r}
 source("minesolver/solver.R")
@@ -495,4 +499,87 @@ print(sakrivanje_polja(tabla, 20))
 
 #### (c) Prosečan broj otvorenih polja potrebnih za rešavanje
 
+Ovo je prilično zanimljiv zadatak, koji ćemo rešiti na prilično zanimljiv način.
+Naime, potrebno je da odredimo koliko je, u proseku, potrebno da bude otvoreno
+polja da bismo mogli jedinstveno da razrešimo tablu. Da bismo ovo postigli,
+treba da generisemo veliki broj tabli, sakrijemo različite brojeve mina i vidimo
+koliko često možemo da rešimo tablu. I to sve za dve dimenzije tabli - 9x9
+i 16x16.
+
+Problem u ovome je što rešavanje table, tačnije metod kontradikcije, jako dugo
+traje, pa bi isuviše mnogo vremena proteklo dok dodjemo do rezultata. Zato,
+budući da ne postoji jednostavan način da se rešavanje značajno ubrza,
+posegnućemo za drugim metodom ubrzavanja koda - iskoristićemo mnogo jaču mašinu
+na kojoj ćemo da odradimo posao. Štaviše, koristićemo Cloud! Uzdaćemo se u
+[Google Compute Engine](https://cloud.google.com/compute/) da odradi posao za
+nas na dva računara, gde jedan ima 8 jezgara (za 9x9 table), a drugi 16 jezgara
+(za 16x16 table).
+
+Za to će nam doći u pomoć paket
+[`googleComputeEngineR`](https://github.com/cloudyr/googleComputeEngineR), koji
+značajno olakšavao posao i omogućava nam da sve odradimo direktno iz R-a, bez
+logovanja na servere Google-a i preuzimanja rezultata. Takodje, od velikog
+značaja je i paket [`future`](https://github.com/HenrikBengtsson/future), koji
+nam olakšava paralelno izvršavanje koda na našem klasteru na Google Cloud-u.
+
+Funkcija koja izvršava konkretno naš zadatak je `get_solving_probs` u fajlu
+`minesolver/gce.R` i ona je dokumentovana u tom fajlu, a mi ćemo je ovde samo
+iskoristiti da dobijemo rezultat.
+
+Za celu operaciju nam uz pomoć oblaka treba samo 10-ak minuta, dok na laptop
+računaru to nisam želeo ni da pokušavam da uradim, tako da je u svakom slučaju
+neuporedivo.
+
+Ako želite da sami pokrenete funkciju i vidite kako to izgleda, morate me
+kontaktirati da sredimo pristup serveru[^3].
+
+[^3]: Funkcija `get_solving_probs` prima i argument `auth_file` koji služi za
+autentifikaciju, ali moj računar je već podešen pa ga izostavljam u pozivu.
+
+Pre pokretanja je potrebno da oslobodimo memoriju u R sesiji, budući da je sada
+pretrpana zbog svih komandi koje smo pokretali, a `future` paket celo okruženje
+prebacuje na oblak pa želimo da to bude što manje. Zato ćemo obrisati sve
+objekte iz okruženja[^4].
+
+[^4]: Ovo često nije potrebno raditi ali tokom ovog seminarskog u okruženje smo
+doveli ogromne objekte pune slika i sličnih podataka.
+
+```{r}
+rm(list = ls())
+```
+Sada možemo da nastavimo...
+
+Dakle, uključimo štoperice i krenimo:
+
+```{r, cache=TRUE}
+source("minesolver/gce.R")
+
+solving_probs <- get_solving_probs()
+```
+
+Trajalo je oko 7 minuta, nije loše.
+
+Hajde da vidimo rezultate probamo da dodjemo do nekog zaključka.
+
+```{r}
+solving_probs
+```
+
+Ovde su prikazane verovatnoće rešavanja table ako je *sakriven* odredjen broj
+polja. Dakle, kad su sakrivena 3 polja (tj. otvoreno 78 polja), uvek može da
+reši tablu.
+
+Za 9x9 tablu nema nekog jako naglog skoka ka velikom procentu, kod 21 sakrivenih
+polja je značajna razlika ali je ipak i dalje samo 81% procenat rešenih tabli.
+Malo manji skok, ali vidljiv se desio kod 12 sakrivenih polja, pri čemu smo tad
+prešli 95% rešenih tabli, tako da bi to mogli da kažemo kao odgovor na
+postavljeno pitanje, tj. da je u proseku dovoljno da bude 59 otvorenih polja da
+bi tabla bila razrešiva.
+
+Za 16x16 tablu imamo jako čudan rezultat, budući da sa 40 na 35 zatvorenih polja
+imamo veliki skok i do 30 raste do čak 94% uspešnosti, ali zatim naglo pada na
+89% kod 25, pa imamo nagli skok na čak 97% za 20 sakrivenih polja, odakle raste
+postepeno do 99%. Dakle, u ovom slučaju mogli bismo da kao odgovor na pitanje
+kažemo da je prosečno dovoljno da bude 20 sakrivenih polja, tj. 196 otvorenih
+polja da bi tabla bila razrešiva.
 
