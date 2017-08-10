@@ -28,7 +28,7 @@ git2r::clone("https://github.com/blaza/minesolver", "./minesolver")
 Ovime smo "klonirali" repozitorijum sa Github-a koristeći u pozadini komandu
 [`git clone`](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone).
 Za svakog ko želi da mu prosečna udaljenost od računara tokom dana bude manja od
-2m, od ogromnog je značaja da nauči da koristi `git`(https://git-scm.com/).
+2m, od ogromnog je značaja da nauči da koristi [`git`](https://git-scm.com/).
 Neki izvori za učenje koje sam našao su:
 
 - [Happy Git with R](http://happygitwithr.com/) - namenjen konkretno
