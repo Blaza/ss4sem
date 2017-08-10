@@ -292,6 +292,7 @@ shape &lt;-<span class="st"> </span><span class="kw">shape_from_pixset</span>(pi
 predictors &lt;-<span class="st"> </span><span class="kw">get_shape_predictors</span>(shape, <span class="dt">df =</span> <span class="ot">TRUE</span>, <span class="dt">na_replacement =</span> <span class="op">-</span><span class="dv">1</span>)
 <span class="co"># stampamo rezultat</span>
 predictors</code></pre></div>
+<div class="kable-table">
 <table>
 <thead>
 <tr class="header">
@@ -312,6 +313,7 @@ predictors</code></pre></div>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Vidimo da imamo 3 temena, da su disperzije dužina stranica, uglova i zbirova susednih uglova bliske nuli, što je i očekivano jer je ovo jednakostraničan trougao. Da li će i naš model isto to reći? Pa hoće, videli smo već na početku.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># klasifikujemo oblik koristeci multinom model &quot;shapes_model&quot;</span>
 shape_class &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">predict</span>(<span class="kw">get_shapes_model</span>(), predictors))
@@ -459,22 +461,8 @@ shape_class &lt;-<span class="st"> </span><span class="kw">as.character</span>(<
 ## [1] 90.04117 90.01907 89.86820 90.07157</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">second</span>(im2, <span class="dt">circle =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAmVBMVEUAAAAHB/8NDf8PD/8VFf8WFv8dHf8pKf8rK/8vL/8wMP9ERP9MTP9NTf9PT/9TU/9aWv9fX/9hYf9jY/9nZ/9wcP90dP93d/94eP95ef+EhP+Fhf+Ghv+Xl/+bm/+dnf+fn/+7u//AwP/Q0NDR0dHa2v/l5f/m5v/p6f/v7//x8f/09P/29v/4+P/8/P/9/f/+/v//AAD///8WpLG4AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAD1ElEQVR4nO3cyY4URxRA0QZjsLEZPDCZ0TMemOr/P86iMNUNVFHJpnlXee4mpKpFhnQUi5Qy3snmg3490ZB++1DnBNjggMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxgMUCFgtYLGCxJoO9Ou2zPH9kQ8Fe7eu8NzGykWB7uZBtGwh2Vmj7dGRnmgf2jtVpxN40DewAF7K3DQM7qHXW7Lw2M7JZYEe8iA0DO8a1Izuf7YxsEtgSr9WLTQM76rV2sUFgyw7Y/2LnsaGRDQNb4rXuIzYHbLHXuo8YsFhjwD7Ba9ViwGJNAfskrzWLAYsFLFYUbANsKtizg2DrFBsCdsDr2f3LFy7d+gvYabPBrl3/ffPHj1/vOWXAJoL98tXz18u3j4DtGg324M52efw9sF2jwX66t12efAds12iwn6++eL3ceAhs12iwl9/c/HPz9+0r/wLbNRps88/dL768+MPTPf8A+7xgh1+cn77Y+zOwqWAHWqtXFWy1BwxYLWCxpoD5RGBhwGKNAfOZ27KAxZoD5lPtRQ0DcxniWIPAXDda0jQwF/qONAnMldkFjQJbILZ2r2Fgxj4cbRiYwSrHmgZ2OmnqANfKveaBvTMc7H2s1XONBDN+72ONBDPg8nBDwbax2tNkMO0JWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWCxgsYDFAhYLWKw9YP8BwcPjOrEFcfkAAAAASUVORK5CYII=" style="display: block; margin: auto;" /></p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">x</th>
-<th align="right">y</th>
-<th align="right">radius</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">151.0373</td>
-<td align="right">133.0373</td>
-<td align="right">30.25643</td>
-</tr>
-</tbody>
-</table>
+<pre><code>##             x        y   radius
+## [1,] 151.0373 133.0373 30.25643</code></pre>
 <p>I to bi bilo sve što se tiče rada sa slikama.</p>
 <hr />
 </div>
@@ -503,7 +491,7 @@ git2r<span class="op">::</span><span class="kw">clone</span>(<span class="st">&q
 <pre><code>## Local:    master /home/blaza/projects/stats/ss4/seminarski/minesolver/
 ## Remote:   master @ origin (https://github.com/blaza/minesolver)
 ## Head:     [bd5ff76] 2017-08-10: Update model</code></pre>
-<p>Ovime smo “klonirali” repozitorijum sa Github-a koristeći u pozadini komandu <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone"><code>git clone</code></a>. Za svakog ko želi da mu prosečna udaljenost od računara tokom dana bude manja od 2m, od ogromnog je značaja da nauči da koristi <code>git</code>(<a href="https://git-scm.com/" class="uri">https://git-scm.com/</a>). Neki izvori za učenje koje sam našao su:</p>
+<p>Ovime smo “klonirali” repozitorijum sa Github-a koristeći u pozadini komandu <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone"><code>git clone</code></a>. Za svakog ko želi da mu prosečna udaljenost od računara tokom dana bude manja od 2m, od ogromnog je značaja da nauči da koristi <a href="https://git-scm.com/"><code>git</code></a>. Neki izvori za učenje koje sam našao su:</p>
 <ul>
 <li><a href="http://happygitwithr.com/">Happy Git with R</a> - namenjen konkretno R korisnicima</li>
 <li><a href="R%20packages%20by%20Hadley%20Wickham">Git and Github - R packages by Hadley Wickham</a> - takodje namenjen R korisnicima, kraći od Happy Git with R, ali može da sadrži neko zrno znanja koje nema tamo.</li>
